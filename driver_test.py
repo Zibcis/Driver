@@ -3,27 +3,22 @@ from time import sleep
 import Controller
 import Motor
 from Encoder import Encoder
+from Driver_Parameters import *
 
 t1 = []
 y1 = []
-in1 = 24
-in2 = 23
-en = 25
-clk = 17
-dt = 27
 i = 0
-t = 0.5
 sp = 30
-e1 = Encoder(27,17)
+e1 = Encoder(dt,clk)
 M1 = Motor.Motor
 C1 = Controller.Controller
-C1.parameterize(C1,0.92,0.8,t)  #0.9,0.3 /0.92,0.8
+C1.parameterize(C1, k, t, tp)  #0.9,0.3 /0.92,0.8
 PWM = M1.configure(M1,in1,in2,en,100)
 M1.change_direction(M1,"Forward")
 M1.change_velocity(M1,PWM,40)
 while True:
     e1.clearValue()
-    sleep(t)
+    sleep(tp)
     enco = e1.getValue()
     pv = (60*enco)/(t*1920)
     #y1.append(pv)

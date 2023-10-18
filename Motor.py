@@ -1,4 +1,6 @@
 import RPi.GPIO as GPIO
+from Driver_Parameters import *
+
 class Motor:
     MotorIn1 = 0
     MotorIn2 = 0
@@ -18,7 +20,7 @@ class Motor:
         GPIO.setup(self.MotorIn2,GPIO.OUT)
         GPIO.setup(self.MotorEn,GPIO.OUT)
         PWM = GPIO.PWM(self.MotorEn,ext_PWM_freq)
-        PWM.start(25)
+        PWM.start(starting_speed)
         return PWM
 
     def change_direction(self,ext_direction) -> None:
@@ -32,7 +34,7 @@ class Motor:
             GPIO.output(self.MotorIn1,GPIO.HIGH)
 
     def change_velocity(self,PWM,ext_cycle) -> None:
-        if ext_cycle <= 75 and ext_cycle > 0 :
+        if ext_cycle <= upper_limit and ext_cycle > lower_limit :
             PWM.ChangeDutyCycle(ext_cycle)
         else:
             print("Niewłaściwa wartość wypełnienia")

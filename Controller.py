@@ -1,3 +1,4 @@
+from Driver_Parameters import *
 class Controller:
     k = 0.0     # Gain
     Ti = 0.0    # Integral Constant
@@ -35,8 +36,6 @@ class Controller:
         
     # Function for calculating actual control value
     def calc_cv(self,sp_value, p_value,):
-        upper_limit = 75
-        lower_limit = 5
         error_k = sp_value - p_value
         self.integral_sum = self.integral_sum + error_k
         cv = self.k * (error_k + (self.Tp/self.Ti)*(self.integral_sum))
