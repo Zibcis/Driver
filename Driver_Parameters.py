@@ -8,7 +8,7 @@ dt = 27     #Encoder pin
 ### Controller Parameters
 k = 0.92  #Controller Gain
 t = 0.8   #Controller Time Constant
-tp = 0.5  #Sampling Time
+tp = 0.1  #Sampling Time
 
 
 ### Motor Parameters
