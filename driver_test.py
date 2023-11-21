@@ -10,7 +10,7 @@ next = 0
 prev = 0
 i = 0
 t = 0.1
-sp = 80
+sp = 900
 e1 = Encoder(dt,clk)
 M1 = Motor.Motor
 C1 = Controller.Controller
@@ -18,7 +18,6 @@ C1.parameterize(C1, k, t, tp)  #0.9,0.3 /0.92,0.8
 PWM = M1.configure(M1,in1,in2,en,100)
 M1.change_direction(M1,"Backward")
 M1.change_velocity(M1,PWM,40)
-#M1.change_velocity(M1,PWM,100)
 while i*t < 10:
     #e1.clearValue()
     next = e1.getValue()
